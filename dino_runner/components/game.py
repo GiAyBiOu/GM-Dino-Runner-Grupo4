@@ -2,6 +2,7 @@ from turtle import update
 import pygame
 from components.dinosaur import Dinosaur
 from components.cloud import Cloud
+from components.obstacles.obstacle_manager import ObstacleManager
 
 from utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
 
@@ -15,6 +16,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.playing = False
         self.dino = Dinosaur()
+        self.obstacle_manager = ObstacleManager()
         self.cloud = Cloud()
         self.game_speed = 20
         self.x_pos_bg = 0
@@ -35,7 +37,9 @@ class Game:
                 self.playing = False
 
     def update(self):
-        self.dino.update()
+        user_input = pygame.key.get_pressed()
+        self.dino.update( user_input)
+        self.obstacle_manager.update()
 
     def draw(self):
         self.clock.tick(FPS)
@@ -43,6 +47,7 @@ class Game:
         self.draw_background()
         self.dino.draw(self.screen)
         self.cloud.draw(self.screen)
+        self.obstacle_manager.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 

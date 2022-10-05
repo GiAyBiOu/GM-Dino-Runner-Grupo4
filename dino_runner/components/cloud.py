@@ -11,3 +11,4 @@ class Cloud(Sprite):
     
     def draw(self, screen):
         screen.blit(self.image, (self.cloud_rect.x, self.cloud_rect.y)) #Blit recibe un objeto tupla, para que se dibuje nuestro objeto
+        #homework
