@@ -21,6 +21,8 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
+        self.death_count = 0
+        self.points = 0
 
     def run(self):
         # Game loop: events - update - draw
@@ -38,10 +40,12 @@ class Game:
 
     def update(self):
         user_input = pygame.key.get_pressed()
-        self.dino.update( user_input)
-        self.obstacle_manager.update()
+        self.dino.update(user_input)
+        self.obstacle_manager.update(self)
+
 
     def draw(self):
+        self.score()
         self.clock.tick(FPS)
         self.screen.fill((255, 255, 255))
         self.draw_background()
@@ -59,3 +63,10 @@ class Game:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
+
+    def score(self):
+        self.points += 1 
+        if self.points % 100 == 0:
+            self.game_speed += 1
+        print("Points :", self.points)
+        print("Speed : ", self.game_speed)
