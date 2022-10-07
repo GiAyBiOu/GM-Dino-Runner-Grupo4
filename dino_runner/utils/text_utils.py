@@ -1,4 +1,5 @@
 import pygame
+import tkinter
 from utils.constants import SCREEN_HEIGHT, SCREEN_WIDTH
 
 FONT_STYLE = 'freesansbold.ttf'

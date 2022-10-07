@@ -1,11 +1,12 @@
 from pygame.sprite import Sprite
 from utils.constants import CLOUD
-
+import random
 class Cloud(Sprite):
     
     def __init__(self):
         self.image = CLOUD
         self.cloud_rect = self.image.get_rect()
+        #self.type = random.randint()
         self.cloud_rect.x = 400
         self.cloud_rect.y = 200
     

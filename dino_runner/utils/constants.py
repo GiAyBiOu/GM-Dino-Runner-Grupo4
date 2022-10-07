@@ -1,5 +1,7 @@
+from msilib.schema import Font
 import pygame
 import os
+
 
 # Global Constants
 TITLE = "Chrome Dino Runner"
@@ -55,12 +57,16 @@ LARGE_CACTUS = [
     pygame.image.load(os.path.join(IMG_DIR, "Cactus/LargeCactus2.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Cactus/LargeCactus3.png")),
 ]
+GAMEOVER =  pygame.image.load(os.path.join(IMG_DIR, "Other/GameOver.png"))
+RESET = pygame.image.load(os.path.join(IMG_DIR, "Other/Reset.png"))          #GAMEOVER Y RESET
+
+
+
 
 BIRD = [
     pygame.image.load(os.path.join(IMG_DIR, "Bird/Bird1.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Bird/Bird2.png")),
 ]
-
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
