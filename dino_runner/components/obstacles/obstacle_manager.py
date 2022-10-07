@@ -1,4 +1,6 @@
 
+from cgitb import small
+from email.mime import image
 from components.obstacles.cactus import Cactus
 import pygame 
 import random
@@ -20,18 +22,23 @@ class ObstacleManager():
             if cactus_size == 1:
                 self.obstacles.append(Cactus(LARGE_CACTUS))
             elif cactus_size == 2:
-                self.obstacles.append(Cactus(SMALL_CACTUS))
-                #self.image_rect.y = 200
-        
+                small_cactus = Cactus(SMALL_CACTUS)
+                small_cactus.image_rect.y = 320
+                self.obstacles.append(small_cactus)
         for obstacle in self.obstacles:
             obstacle.update()
+            #print(obstacle.image_rect.x)
+            #print(obstacle.image_rect.width)
+            if obstacle. image_rect.x < -obstacle. image_rect.width:
+                self.obstacles.pop()
             if game.dino.dino_rect.colliderect(obstacle.image_rect):
-                pygame.time.delay(1000)
+                pygame.time.delay(500)
                 game.death_count += 1
                 self.obstacles.pop()
                 if game.death_count == 5:
                     game.playing = False
-                print( game.death_count)
-                break
+                    game.excute()
+                print(game.death_count)
+                
 
 
